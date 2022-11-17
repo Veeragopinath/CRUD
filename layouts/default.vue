@@ -1,40 +1,50 @@
 <template>
-  <v-app>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
+  <v-app id="inspire">
+    <v-navigation-drawer v-model="drawer" app>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="text-h4 white--text">
+            Vue Practical
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list dense nav>
+        <v-list-item v-for="item in navItems" :key="item.title" link>
+          <v-list-item-icon>
+            <v-icon color="white">{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title class="white--text text-h6">{{
+              item.title
+            }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
-      <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <v-toolbar-title class="mr-6">Dashboard</v-toolbar-title>
+      <v-toolbar-title>Users</v-toolbar-title>
     </v-app-bar>
-    <v-main>
-      <v-container>
-        <Nuxt />
+
+    <v-main app fluid>
+      <v-container class="outerContainer" style="height: 100%">
+        <v-breadcrumbs :items="breadcrums" large></v-breadcrumbs>
+
+        <v-container
+          class="innerContainer grey lighten-2 pa-4"
+          style="height: 100%"
+        >
+          <v-container class="mt-5" style="min-height: 90vh">
+            <Nuxt />
+          </v-container>
+        </v-container>
       </v-container>
     </v-main>
   </v-app>
@@ -42,29 +52,33 @@
 
 <script>
 export default {
-  name: 'DefaultLayout',
-  data() {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/',
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
-        },
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js',
-    }
-  },
+  data: () => ({
+    drawer: null,
+    navItems: [
+      { title: 'Dashboard', icon: 'mdi-view-dashboard' },
+      { title: 'Users', icon: 'mdi-image' },
+    ],
+    breadcrums: [
+      {
+        text: 'Home',
+        disabled: false,
+      },
+      {
+        text: 'Users',
+        disabled: false,
+      },
+    ],
+  }),
 }
 </script>
+<style>
+.v-navigation-drawer {
+  background-color: #3c4b64 !important;
+}
+.outerContainer {
+  background-color: white;
+}
+/* .innerContainer {
+  background-color: red;
+} */
+</style>

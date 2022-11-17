@@ -1,87 +1,77 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation </a
-            >.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br />
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+  <v-card class="mainPage outlined mx-3">
+    <v-row class="pa-4">
+      <v-col class="text-h6"> Users </v-col>
+      <v-spacer> </v-spacer>
+      <v-btn class="blue white--text">Create User</v-btn>
+    </v-row>
+    <v-divider></v-divider>
+
+    <v-sheet outlined>
+      <v-data-table
+        :headers="Headers"
+        fixed-header
+        :page.sync="page"
+        class="custom_table_class"
+        hide-default-footer
+        @page-count="pageCount = $event"
+      ></v-data-table
+    ></v-sheet>
+    <div class="pt-2 pb-2">
+      <v-pagination class="mt-4 mb-4" v-model="page" :length="pageCount">
+      </v-pagination>
+    </div>
+  </v-card>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
+  // import { Headers } from './helpers/tableHeaders.js' ;
+  data() {
+    return {
+      page: 1,
+      pageCount: 0,
+      Headers: [
+        {
+          text: 'Name',
+          align: 'start',
+          value: 'name',
+          class: ' font-weight-bold',
+        },
+        {
+          text: 'Sur Name',
+          value: 'sur_name',
+          class: ' font-weight-bold',
+        },
+        {
+          text: ' EMail',
+          value: 'e_mail',
+          class: ' font-weight-bold',
+        },
+        {
+          text: 'Phone Number',
+          value: 'phone_number',
+          class: ' font-weight-bold',
+        },
+        {
+          text: 'Activate',
+          value: 'activate',
+          class: ' font-weight-bold',
+        },
+        {
+          text: 'Action',
+
+          value: 'Action',
+          class: ' font-weight-bold',
+        },
+      ],
+    }
+  },
 }
 </script>
+
+<style scoped>
+.mainPage {
+  background-color: #ffffff;
+}
+</style>
