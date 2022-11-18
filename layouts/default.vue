@@ -31,16 +31,26 @@
 
       <v-toolbar-title class="mr-6">Dashboard</v-toolbar-title>
       <v-toolbar-title>Users</v-toolbar-title>
+      <v-spacer></v-spacer>
+
+      <v-btn class="elevation-0 bg">
+        <v-icon>mdi-help-circle-outline</v-icon>
+      </v-btn>
+      <v-btn fab dark x-small color="blue" class="mr-6" v-bind="attrs" v-on="on">
+        
+          <v-icon dark> mdi-bell </v-icon>
+        </v-badge>
+      </v-btn>
     </v-app-bar>
 
     <v-main app fluid>
-      <v-container class="outerContainer" style="height: 100%">
+      <v-container
+        class="outerContainer mt-n3 py-n2"
+        style="min-height: 100vh , padding: 0"
+      >
         <v-breadcrumbs :items="breadcrums" large></v-breadcrumbs>
-
-        <v-container
-          class="innerContainer grey lighten-2 pa-4"
-          style="height: 100%"
-        >
+       
+        <v-container class="innerContainer grey lighten-2 pa-" style="height: 100%">
           <v-container class="mt-5" style="min-height: 90vh">
             <Nuxt />
           </v-container>

@@ -1,37 +1,67 @@
 <template>
-  <v-card class="mainPage outlined mx-3">
-    <v-row class="pa-4">
-      <v-col class="text-h6"> Users </v-col>
+  <v-card class="mainPage outlined mx-3 px-4">
+    <v-row class="px-3 py-2">
+      <v-col class="font-weight-bold heading-4"> Users </v-col>
       <v-spacer> </v-spacer>
-      <v-btn class="blue white--text" @click="userAddMode = true">Create User</v-btn>
+      <v-btn class="blue white--text px-3 py-1" @click="userAddMode = true"
+        >Create User</v-btn
+      >
     </v-row>
     <v-divider></v-divider>
-
-    <v-sheet outlined>
+    <v-row class="mt-3">
+      <v-col md="5">
+        <v-text-field
+          v-model="search"
+          label="search by text"
+          outlined
+          dense
+          hint="Search by Name, Surname, email, username, phonenumber"
+        ></v-text-field>
+      </v-col>
+      <v-col md="4">
+        <v-combobox
+          outlined
+          dense
+          label="Select Status"
+          :items="activationItems"
+        ></v-combobox>
+      </v-col>
+    </v-row>
+    <v-sheet outlined class="mt-1">
       <v-data-table
         :headers="Headers"
         :items="listOfUsers"
         fixed-header
+        :search="search"
         hide-default-footer
         :items-per-page="itemsPerPage"
+        :page.sync="page"
       >
-        <template #[`item.num`]="{ item }">
+        <!-- <template #[`item.num`]="{ item }">
           <span class="number-style">
             {{ listOfItems.indexOf(item) + 1 }}
           </span>
-        </template>
+        </template> -->
         <template #[`item.actions`]="{ item }">
           <div class="d-flex">
-            <v-btn class="crudButtonPrimary pa-2" @click="editUser(item)"> Edit </v-btn>
-            <v-btn color="grey" class="pa-2" @click="deleteUserDialog(item)">
+            <v-btn class="crudButtonPrimary px-3 py-0 mr-2" @click="editUser(item)">
+              Edit
+            </v-btn>
+            <v-btn color="grey" class="px-3 py-0" @click="deleteUserDialog(item)">
               Delete
             </v-btn>
           </div>
         </template></v-data-table
       ></v-sheet
     >
-    <div class="pt-2 pb-2">
-      <v-pagination class="mt-4 mb-4" v-model="page" :length="pageCount"> </v-pagination>
+    <div class="pt-1 pb-1">
+      <v-pagination
+        class="mt-2 mb-2"
+        v-model="page"
+        :total-visible="5"
+        :length="pageCount"
+      >
+      </v-pagination>
     </div>
     <v-dialog
       v-if="userAddMode"
@@ -61,12 +91,14 @@ export default {
     return {
       Headers: Headers,
       listOfUsers: [],
-
-      pageCount: 0,
+      search: "",
+      pageCount: 3,
       userAddMode: false,
       deleteDialog: false,
       userName: "",
-      itemsPerPage: 10,
+      itemsPerPage: 5,
+      page: 1,
+      activationItems: ["Free", "Premium", "Family", "Elite", "platinum"],
     };
   },
   // computed: {
@@ -98,7 +130,7 @@ export default {
     editUser(item) {
       this.$router.push({
         path: "/editUser",
-        query: { id: this.listOfUsers.indexOf(item) },
+        query: { id: item.id },
       });
     },
 

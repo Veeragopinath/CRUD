@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "name": "Steve ssa",
+      "name": "Steve gauni",
       "sur_name": "Palmer",
       "e_mail": "steve@codingthesmartway.com",
       "phone_number": "7894561234",
@@ -26,28 +26,28 @@
       "sur_name": "R"
     },
     {
-      "name": "Dinesprasad",
-      "e_mail": "vinothkumar0071995@gmail.com",
-      "phone_number": "0701047741",
-      "sur_name": "sedvdsv",
-      "activate": "platinum",
-      "id": 5
-    },
-    {
-      "name": "Rajesh",
-      "e_mail": "vinothkumar0071995@gmail.com",
-      "phone_number": "0701047716",
-      "sur_name": "kumar",
-      "activate": "platinum",
-      "id": 6
-    },
-    {
       "name": "Rajesh",
       "e_mail": "vinothkumar0071995@gmail.com",
       "phone_number": "0701047741",
       "sur_name": "Kumar",
       "activate": "platinum",
       "id": 7
+    },
+    {
+      "name": "Veeragopinath",
+      "e_mail": "veeragopinath.m@gmail.com",
+      "phone_number": "8525859901",
+      "sur_name": "M",
+      "activate": "Elite",
+      "id": 8
+    },
+    {
+      "name": "babu",
+      "e_mail": "vinothkumar0071995@gmail.com",
+      "phone_number": "0700477416",
+      "activate": "platinum",
+      "sur_name": "K",
+      "id": 9
     }
   ]
 }
