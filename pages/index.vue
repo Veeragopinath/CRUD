@@ -18,7 +18,7 @@
       >
         <template #[`item.actions`]="{ item }">
           <div class="float-right">
-            <v-btn icon color="Blue" @click="edit(item)">
+            <v-btn icon color="Blue" @click="editUser(item)">
               <v-icon>mdi-pencil</v-icon>
             </v-btn>
             <v-btn
@@ -35,7 +35,12 @@
     <div class="pt-2 pb-2">
       <v-pagination class="mt-4 mb-4" v-model="page" :length="pageCount"> </v-pagination>
     </div>
-    <v-dialog v-model="userAddMode" persistent max-width="600" :retain-focus="false"
+    <v-dialog
+      v-if="userAddMode"
+      v-model="userAddMode"
+      persistent
+      max-width="600"
+      :retain-focus="false"
       ><add-user @submitForm="addUser" @cancel="userAddMode = false"></add-user
     ></v-dialog>
   </v-card>
@@ -61,27 +66,29 @@ export default {
   //     return
   //   },
   // },
-  // mounted() {
-  //   var fs = require("fs");
-  //   this.store = fs.readFileSync("store.json");
-  // },
+  mounted() {
+    this.initialise();
+  },
   methods: {
+    initialise() {
+      debugger;
+      this.$axios.get("/users").then((res) => {
+        this.listOfUsers = res.data;
+      });
+    },
     addUser(user) {
       debugger;
+      this.$axios
+        .post("/users", user)
 
-      this.listOfUsers.push(user);
-      this.data = JSON.stringify(this.listOfUsers);
-      // this.listOfUsers = JSON.parse("data");
-      // var fs = require("fs");
-      debugger;
-      try {
-        fs.writeFile("store.json", this.data);
-      } catch (e) {
-        alert("Failed to save the file !");
-      }
+        .then((res) => {
+          debugger;
+          this.initialise();
+        });
       this.userAddMode = false;
     },
-    edit(item) {
+
+    editUser(item) {
       this.$router.push({
         path: "/editUser",
         query: { id: this.listOfUsers.indexOf(item) },

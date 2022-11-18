@@ -16,7 +16,7 @@
           </v-col>
           <v-col md="6">
             <v-text-field
-              v-model="form.surname"
+              v-model="form.sur_name"
               outlined
               dense
               :rules="[rules.name]"
@@ -76,10 +76,6 @@ export default {
       type: String,
       default: " ADD USER",
     },
-    // type: {
-    //   type: String,
-    //   default: 'cancel',
-    // },
   },
   data() {
     return {
@@ -88,12 +84,14 @@ export default {
       activationItems: ["Free", "Premium", "Family", "Elite", "platinum"],
     };
   },
+
   methods: {
     saveUser() {
       debugger;
-      if (this.$refs.form.validate()) {
-        this.$emit("submitForm", this.form);
-        this.$refs.form.reset();
+      if (this.$refs.userform.validate()) {
+        this.$emit("submitForm", this.form).then(() => {
+          this.$refs.userform.reset();
+        });
       }
     },
     cancel() {

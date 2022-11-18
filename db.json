@@ -1,28 +1,45 @@
 {
-    "users": [
-      {
-        "id": 1,
-        "name": "Sebastian",
-        "sur_name": "Eschweiler",
-        "email": "sebastian@codingthesmartway.com",
-        "phone_number": "789456123",
-        "activate": "elite"
-      },
-      {
-        "id": 2,
-        "name": "Steve",
-        "sur_name": "Palmer",
-        "email": "steve@codingthesmartway.com",
-        "phone_number": "789456123",
-        "activate": "elite"
-      },
-      {
-        "id": 3,
-        "name": "Ann",
-        "sur_name": "Smith",
-        "email": "ann@codingthesmartway.com",
-        "phone_number": "789456123",
-        "activate": "elite"
-      }
-    ]
-  }
+  "users": [
+    {
+      "id": 0,
+      "name": null,
+      "sur_name": null,
+      "e_mail": null,
+      "phone_number": null,
+      "activate": null
+    },
+    {
+      "id": 1,
+      "name": "Steve ssa",
+      "sur_name": "Palmer",
+      "e_mail": "steve@codingthesmartway.com",
+      "phone_number": "7894561234",
+      "activate": "elite"
+    },
+    {
+      "id": 2,
+      "name": "Anncvbdf",
+      "sur_name": "Smith",
+      "e_mail": "ann@codingthesmartway.com",
+      "phone_number": "7894561234",
+      "activate": "elite"
+    },
+    {
+      "id": 3,
+      "name": "Veeragopinath",
+      "e_mail": "veeragopinath.m@gmail.com",
+      "phone_number": "8525859901",
+      "sur_name": "M",
+      "activate": "Family"
+    },
+    {
+      "id": 4,
+      "name": "Muthuramalingam",
+      "e_mail": "vinothkumar0071995@gmail.com",
+      "phone_number": "7010477416",
+      "surname": null,
+      "activate": "Elite",
+      "sur_name": "R"
+    }
+  ]
+}
