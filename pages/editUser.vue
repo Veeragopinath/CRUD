@@ -5,17 +5,16 @@
 </template>
 
 <script>
-import addUser from '~/components/addUser.vue'
+import addUser from "~/components/addUser.vue";
 export default {
   components: { addUser },
   data() {
-    return {}
+    return {};
   },
   methods: {
     editUser(user) {},
   },
-}
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
