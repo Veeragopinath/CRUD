@@ -2,7 +2,7 @@
   <div>
     <v-form id="addIssueForm" ref="form">
       <v-card class="pa-6">
-        <v-card-title class="text-h5 font-weight-bold">{{ title }}</v-card-title>
+        <v-card-title class="text-h5 font-weight-bold">EDIT USER</v-card-title>
         <v-divider></v-divider>
         <v-row class="mt-2">
           <v-col md="6">
@@ -56,7 +56,10 @@
           </v-col>
         </v-row>
         <v-footer class="d-flex bg justify-end white">
-          <v-btn color="blue" class="mr-5 white--text" depressed @click="updateUser()"
+          <v-btn
+            class="mr-5 crudButtonPrimary white--text"
+            depressed
+            @click="updateUser()"
             >Update</v-btn
           >
           <v-btn color="grey lighten-1" class="mr-5 white--text" depressed @click="cancel"
@@ -82,7 +85,7 @@ export default {
     };
   },
 
-  mounted() {
+  created() {
     this.initialize();
   },
   methods: {
@@ -100,6 +103,10 @@ export default {
           this.$refs.form.reset();
           this.$router.push("/");
         });
+    },
+    cancel() {
+      this.$refs.form.reset();
+      this.$router.push("/");
     },
   },
 };

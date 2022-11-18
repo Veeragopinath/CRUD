@@ -6,27 +6,25 @@
       <v-btn class="blue white--text" @click="userAddMode = true">Create User</v-btn>
     </v-row>
     <v-divider></v-divider>
-    {{ listOfUsers }}
-    {{ data }}
+
     <v-sheet outlined>
       <v-data-table
         :headers="Headers"
         :items="listOfUsers"
         fixed-header
-        :page.sync="page"
         hide-default-footer
+        :items-per-page="itemsPerPage"
       >
+        <template #[`item.num`]="{ item }">
+          <span class="number-style">
+            {{ listOfItems.indexOf(item) + 1 }}
+          </span>
+        </template>
         <template #[`item.actions`]="{ item }">
-          <div class="float-right">
-            <v-btn icon color="Blue" @click="editUser(item)">
-              <v-icon>mdi-pencil</v-icon>
-            </v-btn>
-            <v-btn
-              icon
-              color="grey"
-              @click="(currentUserId = item.id), (deleteDialog = true);"
-            >
-              <v-icon>mdi-delete</v-icon>
+          <div class="d-flex">
+            <v-btn class="crudButtonPrimary pa-2" @click="editUser(item)"> Edit </v-btn>
+            <v-btn color="grey" class="pa-2" @click="deleteUserDialog(item)">
+              Delete
             </v-btn>
           </div>
         </template></v-data-table
@@ -43,22 +41,32 @@
       :retain-focus="false"
       ><add-user @submitForm="addUser" @cancel="userAddMode = false"></add-user
     ></v-dialog>
+    <delete-dialog
+      :show="deleteDialog"
+      :userName="userName"
+      @agree="deleteUser"
+      @close="deleteDialog = false"
+    ></delete-dialog>
   </v-card>
 </template>
 
 <script>
 import { Headers } from "~/helpers/tableHeaders.js";
 import addUser from "~/components/addUser.vue";
+import DeleteDialog from "~/components/deleteDialog.vue";
 export default {
-  components: { addUser },
+  components: { addUser, DeleteDialog },
 
   data() {
     return {
       Headers: Headers,
       listOfUsers: [],
-      page: 1,
+
       pageCount: 0,
       userAddMode: false,
+      deleteDialog: false,
+      userName: "",
+      itemsPerPage: 10,
     };
   },
   // computed: {
@@ -82,7 +90,6 @@ export default {
         .post("/users", user)
 
         .then((res) => {
-          debugger;
           this.initialise();
         });
       this.userAddMode = false;
@@ -94,12 +101,29 @@ export default {
         query: { id: this.listOfUsers.indexOf(item) },
       });
     },
+
+    deleteUserDialog(item) {
+      this.userName = item.name;
+      this.deleteDialog = true;
+      this.userToBeDeletedId = item.id;
+    },
+    deleteUser() {
+      this.$axios.delete(`/users/${this.userToBeDeletedId}`).then((res) => {
+        this.userToBeDeletedId = "";
+        this.deleteDialog = false;
+        this.initialise();
+      });
+    },
   },
 };
 </script>
 
-<style scoped>
+<style>
 .mainPage {
   background-color: #ffffff;
+}
+.crudButtonPrimary {
+  background-color: #3497fa !important ;
+  color: #ffffff !important;
 }
 </style>

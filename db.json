@@ -1,26 +1,10 @@
 {
   "users": [
     {
-      "id": 0,
-      "name": null,
-      "sur_name": null,
-      "e_mail": null,
-      "phone_number": null,
-      "activate": null
-    },
-    {
       "id": 1,
       "name": "Steve ssa",
       "sur_name": "Palmer",
       "e_mail": "steve@codingthesmartway.com",
-      "phone_number": "7894561234",
-      "activate": "elite"
-    },
-    {
-      "id": 2,
-      "name": "Anncvbdf",
-      "sur_name": "Smith",
-      "e_mail": "ann@codingthesmartway.com",
       "phone_number": "7894561234",
       "activate": "elite"
     },
@@ -40,6 +24,30 @@
       "surname": null,
       "activate": "Elite",
       "sur_name": "R"
+    },
+    {
+      "name": "Dinesprasad",
+      "e_mail": "vinothkumar0071995@gmail.com",
+      "phone_number": "0701047741",
+      "sur_name": "sedvdsv",
+      "activate": "platinum",
+      "id": 5
+    },
+    {
+      "name": "Rajesh",
+      "e_mail": "vinothkumar0071995@gmail.com",
+      "phone_number": "0701047716",
+      "sur_name": "kumar",
+      "activate": "platinum",
+      "id": 6
+    },
+    {
+      "name": "Rajesh",
+      "e_mail": "vinothkumar0071995@gmail.com",
+      "phone_number": "0701047741",
+      "sur_name": "Kumar",
+      "activate": "platinum",
+      "id": 7
     }
   ]
 }
