@@ -2,7 +2,7 @@
 
 ## Build Setup
 
-```bash
+```use node version v16.15.1
 # install dependencies
 $ npm install
 
