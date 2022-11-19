@@ -1,14 +1,15 @@
 # CRUD-operation
 
-## Build Setup
+## Initial Setup
 
-!important use node version v16.15.1
+use node version v16.15.1
 
 # install dependencies
 
 $ npm install
 
-!important #for runing client server and json server , use two different terminals
+!important -- 
+    for runing client server and json server , use two different terminals
 
 # For running client server ,which will be lisening on port localhost:3000
 
