@@ -8,9 +8,6 @@
 
 $ npm install
 
-#npm json server , which will watch db.json for datas
-$ npm install json-server -D
-
 !important #for runing client server and json server , use two different terminals
 
 # For running client server ,which will be lisening on port localhost:3000
@@ -26,11 +23,7 @@ $ npm run db:serve
 $ npm run build
 $ npm run start
 
-# generate static project
 
-$ npm run generate
-
-```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
