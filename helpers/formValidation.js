@@ -5,6 +5,6 @@ export const rules = {
   mobileLength: (v) => v?.length === 10 || 'Enter a 10 digit mobile number',
   number: (v) => !v || /^(\d+)$/.test(v) || 'Enter a valid number',
   name: (v) =>
-    (/^[A-Za-z]+$/.test(v)) || 'Name should be valid',
+    v => v.length <= 10 || 'Name must be less than 10 characters',
 
 };

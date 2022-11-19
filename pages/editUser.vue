@@ -10,7 +10,7 @@
               v-model="form.name"
               outlined
               dense
-              :rules="rules.name"
+              :rules="[rules.required, rules.name]"
               label="Name"
             ></v-text-field>
           </v-col>
@@ -19,7 +19,7 @@
               v-model="form.sur_name"
               outlined
               dense
-              :rules="[rules.name]"
+              :rules="[rules.required, rules.name]"
               label="Sur Name"
             ></v-text-field>
           </v-col>
@@ -30,7 +30,7 @@
               v-model="form.e_mail"
               outlined
               dense
-              :rules="[rules.email]"
+              :rules="[rules.required, rules.email]"
               label="E Mail"
             ></v-text-field>
           </v-col>
@@ -41,17 +41,18 @@
               v-model="form.phone_number"
               outlined
               dense
-              :rules="[rules.mobile, rules.mobileLength]"
+              :rules="[rules.required, rules.mobile, rules.mobileLength]"
               label="Phone Number"
             ></v-text-field>
           </v-col>
           <v-col md="6">
             <v-combobox
+              :items="activationItems"
               outlined
               dense
               v-model="form.activate"
               label="Activate"
-              :items="activationItems"
+              :rules="[rules.required]"
             ></v-combobox>
           </v-col>
         </v-row>
