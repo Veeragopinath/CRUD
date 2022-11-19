@@ -2,27 +2,34 @@
 
 ## Build Setup
 
-```use node version v16.15.1
+!important use node version v16.15.1
+
 # install dependencies
+
 $ npm install
 
 #npm json server , which will watch db.json for datas
- $ npm install json-server -D
+$ npm install json-server -D
 
- !important   #for runing client server  and json server , use two different terminals
+!important #for runing client server and json server , use two different terminals
 
 # For running client server ,which will be lisening on port localhost:3000
+
 $ npm run dev
 
 # for running json server , which will be lisening on port localhost:3001
+
 $ npm run db:serve
 
 # build for production and launch server
+
 $ npm run build
 $ npm run start
 
 # generate static project
+
 $ npm run generate
+
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
@@ -56,3 +63,4 @@ Example: `/static/robots.txt` is mapped as `/robots.txt`.
 ### `db.json`
 
 This file contains your data. The json-server will serve the data from the db.json file and Axios will be able to consume it.
+```
